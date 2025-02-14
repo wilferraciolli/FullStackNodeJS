@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Client</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  </head>
+  <body>
+    <h1>Socket.IO Client</h1>
+    <button onclick="createOrder()">Enviar Mensagem</button>
+    <h1>Novas ordens</h1>
+    <p id="responseNewOrder"></p>
+    <h1>Novos preços</h1>
+    <p id="responseNewPrice"></p>
+
+    <script>
+      const token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTczOTMxODQzOSwiZXhwIjoxNzM5NDA0ODM5fQ.6TuDV5ZAWu6dwWR6jckG9UF8RPn-58Cz47ey9yGTCGw';
+      const socket = io('http://localhost:3000', {
+        extraHeaders: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+
+      socket.on('newPrice', (data) => {
+        document.getElementById('responseNewPrice').innerText +=
+          '\nNovo preço: ' + JSON.stringify(data);
+      });
+
+      function createOrder() {
+        socket.emit(
+          'createOrder',
+          {
+            assetId: 1,
+            price: 100,
+            shares: 10,
+          },
+          (ackData) => {
+            document.getElementById('responseNewOrder').innerText +=
+              '\nNova order criada: ' + JSON.stringify(ackData);
+          },
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql:8.0.30-debian
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=nestjs
+
+# container é um processo isolado (3306)
+# host (3306)
