@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server within the root folder:
 
 ```bash
 npm run dev
@@ -13,6 +13,13 @@ pnpm dev
 # or
 bun dev
 ```
+
+Second run the fake api server (websokets to simulate prices) within the .fake-api folder
+```bash
+npm i
+npm start
+```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
