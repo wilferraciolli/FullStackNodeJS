@@ -28,3 +28,10 @@ replay_pid*
 /.idea/modules.xml
 /.idea/prettier.xml
 /.idea/vcs.xml
+/nestJS/.idea/inspectionProfiles/Project_Default.xml
+/nestJS/.idea/.gitignore
+/nestJS/.idea/modules.xml
+/nestJS/.idea/nestJS.iml
+/nestJS/.idea/prettier.xml
+/nestJS/.idea/vcs.xml
+/nestJS/.idea/*
