@@ -1,7 +1,25 @@
 ## Description
+This is a simple websockets program that allows users 
+to connect and send messages to everyone within the same websocket
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
+### To test the app localy
+Spin the server, then within Postman connect with `http:localhost:3000` by creating a new SocketIO request.
+Within the Message tab, for the message type (just before the Send button) type in `channels`, then for the payload pass in the following payload
+```json
+{
+  "id": "someId1",
+  "feature": "check-ins",
+  "subFeature": "check-in",
+  "resourceId": "id101",
+  "message": "User 1 is typing"
+}
+```
+![01-connection.png](src/resources/01-connection.png)
+Next on the Events tab, you need to specify which message types you are interested on listening to, within the Events tad add the following events
+* reply
+* client-connected
+* client-disconnected
+![02-event-listening-to.png](src/resources/02-event-listening-to.png)
 ## Project setup
 
 ```bash
@@ -13,10 +31,14 @@ $ npm install
 ```bash
 # development
 $ npm run start
+```
 
+```bash
 # watch mode
 $ npm run start:dev
+```
 
+```bash
 # production mode
 $ npm run start:prod
 ```
@@ -37,15 +59,15 @@ $ npm run test:cov
 ## Dependencies
 Websockets and Socket IO
 ```bash
-$ npm i --save @nestjs/websockets @nestjs/platform-socket.io  @types/socket.io
+  npm i --save @nestjs/websockets @nestjs/platform-socket.io  @types/socket.io
 ```
 
 ## Create Gateway
 ```bash
-nest g gateway
+  nest g gateway
 ```
 
-# Websockets Rooms
+# Websockets Rooms (other websocket project)
 Yes, Socket.IO automatically manages the lifecycle of rooms. When there are no more clients in a room, Socket.IO will automatically "destroy" it (remove it from memory). This happens behind the scenes without you needing to implement any cleanup logic.
 Here's how it works:
 
